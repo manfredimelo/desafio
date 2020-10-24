@@ -1,0 +1,81 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<title>Login Page</title>
+	   <!--Made with love by Mutiullah Samim -->
+
+		<!--Bootsrap 4 CDN-->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+		<!--Fontawesome CDN-->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+		<!--Custom styles-->
+	<!--    <link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css">-->
+		<link href="{% static 'css/login.css' %}" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="row" style="margin-top:10%; margin-bottom:50px;">
+				<div class="col-sm-12 d-flex justify-content-center">
+
+
+				</div>
+			</div>
+			<div class="d-flex justify-content-center">
+
+				<div class="card">
+					<div class="card-header">
+<!--						<h3>Entrar</h3>-->
+						<div class="d-flex justify-content-center ">
+							<a href="/" class="text-center mt-2 text-light">
+                  				<h2 class="login-title text-light">Desafio</h2>
+                 			</a>
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="row">
+            				<div class="col-sm-12 text-center" style="padding: 20px 0px 0px 0px; color: white; font-size: 16px; ">
+                				{% for message in messages %}
+                    				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+									<span class="sr-only">Error:</span>
+                      				<strong>{{message}}</strong>
+                  				{% endfor %}
+                			</div>
+            			</div>
+						<form method="post" name="form">
+    						{% csrf_token %}
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-user"></i></span>
+								</div>
+								<input type="text" class="form-control" placeholder="username" name="username" id="username" maxlength="14">
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-key"></i></span>
+								</div>
+								<input type="password" class="form-control" placeholder="senha" name="password" id="password">
+							</div>
+
+							<div class="form-group">
+								<button class="btn btn-warning float-right" type="submit">Entrar</button>
+
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+<!--	<script type="text/javascript" src="http://static.itec.al.gov.br/plugins/input-mask/jquery.inputmask.js"></script>-->
+		<script src="{% static 'js/core/jquery.min.js' %}"></script>
+		<script src="{% static 'js/jquery.inputmask.js' %}"></script>
+		<script src="{% static 'js/mask.js' %}"></script>
+	</body>
+</html>

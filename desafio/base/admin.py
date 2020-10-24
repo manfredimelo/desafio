@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+u"""."""
+
 from django.contrib import admin
 
-# Register your models here.
+from base.models import Produto
+
+admin.site.register(Produto)

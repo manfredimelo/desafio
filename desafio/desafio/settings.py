@@ -13,7 +13,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from os.path import normpath, join, abspath
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(abspath(__file__))
+SITE_ROOT = os.path.dirname(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -24,6 +27,11 @@ SECRET_KEY = '(spar_=zl*@2!^dq635ppyy=&!$d6su_*@30th0kd7zmi$)zla'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
+
+ALLOWED_HOSTS = ['localhost']
+LOGIN_URL = "/"
+LOGIN_REDIRECT_URL='/'
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'base',
 ]
 
 MIDDLEWARE = [
@@ -116,5 +127,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATICFILES_DIRS = (
+    normpath(join(SITE_ROOT, 'static')),
+)
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
