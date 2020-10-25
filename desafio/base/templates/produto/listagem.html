@@ -1,0 +1,147 @@
+{% extends 'base/base_site.html' %}
+{% load static %}
+{% load  bootstrap_pagination  %}
+{% block pagetitle %}
+Cadastros Básicos
+{% endblock pagetitle %}
+{% block titlebar %}
+<nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Produtos</li>
+    </ol>
+</nav>
+{% endblock titlebar %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Listagem de Produtos</h3>
+        <div class="card ">
+            <div class="card-header">
+                <form class="" action="" method="GET">
+                    {% csrf_token %}
+                    <div class="row filters float-right">
+                        <div class="col-sm-2">
+                            <a href="{% url 'cadastrar_produto' %}" class="btn btn-outline-danger mb-2"
+                               data-toggle="tooltip" title="Cadastrar novo Produto">
+                                <i class="fas fa-plus fa-xs"></i> Novo Produto
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row filters">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Nome</label>
+                                {{ buscar_form.nome }}
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label>Cor</label>
+                                {{ buscar_form.cor }}
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group ">
+                                <label>Tipo</label>
+                                {{ buscar_form.tipo }}
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group ">
+                                <label>Processado</label>
+                                {{ buscar_form.processado }}
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <label  style="color: #fff">-</label><br/>
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fas fa-search fa-xs"></i>&nbsp;Buscar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% comment %}
+                        <div class="col-sm-3">
+                            <div class="form-group ">
+                                <label for="id_perfil">Status</label>
+                                {{ buscar_form.status }}
+                            </div>
+                        </div>
+                        {% endcomment %}
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-light text-primary">
+                        <tr>
+                            <th>
+                                Código
+                            </th>
+                            <th>
+                                Nome
+                            </th>
+                            <th>
+                                Tipo
+                            </th>
+                            <th>
+                                Cor
+                            </th>
+                            <th>
+                                Processado
+                            </th>
+
+                            <th class="text-center">
+                                #
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for produto in produtos %}
+                        <tr>
+                            <td>{{produto.codigo_gtin}}</td>
+                            <td>{{produto.nome}}</td>
+                            <td>{{ produto.tipo }}</td>
+                            <td>{{ produto.cor }}</td>
+                            <td>{% if produto.processado %} SIm {% else %} Não {% endif %}</td>
+
+                            <td>
+                                <a class="btn btn-outline-danger" href="{% url 'editar_produto' produto.id %}"
+                                   data-toggle="tooltip" title="Editar">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer justify-content-center">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div >
+                            Mostrando {{ produtos_paginator.start_index }} até {{ produtos_paginator.end_index }} de
+                            {{ produtos_paginator.paginator.count }} registros.
+                        </div>
+
+                        <nav aria-label="navigation" class="mt-2">
+                            <ul class="pagination float-right">
+                                {% bootstrap_paginate produtos_paginator show_first_last="true" url_param_name="produtos_page" %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extrajs %}
+
+{% endblock %}

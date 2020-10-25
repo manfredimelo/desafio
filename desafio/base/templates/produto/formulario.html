@@ -1,0 +1,88 @@
+{% extends 'base/base_site.html' %}
+{% load static  %}
+
+{% block pagetitle %}
+	Cadastro de Produtos
+{% endblock pagetitle %}
+{% block titlebar %}
+<!--<nav aria-label="breadcrumb" role="navigation">-->
+    <ol class="breadcrumb">
+		<li class="breadcrumb-item text-success">
+			<b>Produtos</b>
+		</li>
+        <li class="breadcrumb-item active" aria-current="page">Cadastrar</li>
+    </ol>
+<!--</nav>-->
+{% endblock titlebar %}
+{% block content %}
+	<div class="row">
+		<div class="col-sm-12">
+			<h3>{% if produto_form.instance.id %}Editar Produto:{% else %}Novo Produto:{% endif %}</h3>
+			{% if produto_form.errors %}
+    			{% for error in produto_form.non_field_errors %}
+        			<div class="alert alert-danger">
+            			<strong>{{ error|escape }}</strong>
+        			</div>
+    			{% endfor %}
+			{% endif %}
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-body">
+						<form action="" method="post">
+							{% csrf_token %}
+							<div class="form-row">
+								<div class="form-group col-sm-7 bmd-form-group">
+									<label for="id_nome" class="control-label required">Nome</label>
+									{{ produto_form.nome }}
+									{{ produto_form.nome.errors }}
+								</div>
+
+								<div class="form-group col-sm-2">
+									<label for="id_codigo_gtin" class="control-label required">Código</label>
+									{{ produto_form.codigo_gtin }}
+									{{ produto_form.codigo_gtin.errors }}
+								</div>
+								<div class="form-group col-sm-3">
+									<label for="id_cor" class="control-label required">Cor</label>
+									{{ produto_form.cor }}
+									{{ produto_form.cor.errors }}
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-sm-7 bmd-form-group">
+									<label for="id_tipo" class="control-label required">Tipo</label>
+									{{ produto_form.tipo }}
+									{{ produto_form.tipo.errors }}
+								</div>
+
+							</div>
+							 <div class="form-row">
+								 <div class="form-group col-sm-12 mt-2">
+									{% if produto.id %}
+										<a href="">
+											<button type="button" class="pull-left btn btn-outline-danger"  >
+												<i class="fas fa-trash-alt"></i>&nbsp;Desativar
+											</button>
+										</a>
+									 {% else %}
+									 	<a href="{% url 'listar_produtos' %}">
+											<button type="button" class="pull-left btn btn-outline-danger"  >
+												<i class="fas fa-trash-alt"> </i> Cancelar
+											</button>
+										</a>
+									{% endif %}
+									 <button type="submit" class="btn btn-outline-success float-right">
+									 <i class="far fa-save"> </i>&nbsp; Salvar</button>
+								 </div>
+							 </div>
+						</form>
+					</div>
+				</div>
+			</div>
+	    </div>
+	</div>
+{% endblock content %}
+
+{% block extrajs %}
+
+{% endblock extrajs %}
