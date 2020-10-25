@@ -1,1 +1,1 @@
-from base.models.pruduto import Produto
+from base.models.produto import Produto

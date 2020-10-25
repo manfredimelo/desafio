@@ -60,10 +60,11 @@ class ProdutoListView(PermissionRequiredMixin, ListView):
                 produtos = produtos.filter(nome__icontains=cor)
             if tipo:
                 produtos = produtos.filter(tipo__icontains=tipo)
+
             if processado and processado == "SIM":
                 produtos = produtos.filter(processado=True)
             elif processado and processado == "NAO":
-                produtos = produtos.filter(processado=True)
+                produtos = produtos.filter(processado=False)
 
         return produtos
 

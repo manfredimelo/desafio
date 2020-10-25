@@ -1,5 +1,4 @@
 from django import forms
-from base.models import Produto
 
 PROCESSADOS_CHOICES = [
     ('', '--------'),
