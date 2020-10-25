@@ -7,5 +7,5 @@ from base.menu import get_list
 @login_required(login_url='/')
 def index(request):
     menu = get_list('Dashboard')
-    print (menu)
+
     return render(request, 'base/index.html', locals())

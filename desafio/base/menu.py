@@ -14,6 +14,8 @@ def get_list(local, user=None):
                      'dashboard', True])
     menulist.append([True, 'Produtos', '/produtos/',
                      'produtos', True])
+    menulist.append([True, 'Regras', '/regras/',
+                     'regras', True])
 
 
     for menu in menulist:
@@ -21,6 +23,5 @@ def get_list(local, user=None):
             menu[0] = True
         else:
             menu[0] = False
-    # print(menulist)
 
     return menulist

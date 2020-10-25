@@ -22,6 +22,7 @@ from base.views.index import index
 from base.views.login import login_restrito
 from base.views.logout import logout
 from base.views.manter_produto import ProdutoCreateView, ProdutoListView, ProdutoUpdateView
+from processamento.views.manter_regra import RegraListView, RegraCreateView, RegraUpdateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,6 +32,10 @@ urlpatterns = [
     url(r'^produtos/$', login_required(ProdutoListView.as_view()), name="listar_produtos"),
     url(r'^produtos/cadastrar/$', ProdutoCreateView.as_view(), name="cadastrar_produto"),
     url(r'^produtos/editar/(?P<id_produto>\d+)/$', ProdutoUpdateView.as_view(), name="editar_produto"),
+
+    url(r'^regras/$', login_required(RegraListView.as_view()), name="listar_regras"),
+    url(r'^regras/cadastrar/$', RegraCreateView.as_view(), name="cadastrar_regra"),
+    url(r'^regras/editar/(?P<id_regra>\d+)/$', RegraUpdateView.as_view(), name="editar_regra"),
 
     # path('admin/', admin.site.urls),
     # path('login', login_restrito, name='login'),

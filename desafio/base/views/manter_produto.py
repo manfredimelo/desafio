@@ -45,14 +45,6 @@ class ProdutoListView(PermissionRequiredMixin, ListView):
             cor = request.get('cor')
             tipo = request.get('tipo')
             processado = request.get('processado')
-            # id_regiao = request.get('regiao')
-            # # status = request.get('status')
-            # cnpj = request.get('cnpj')
-            #
-            # if cnpj:
-            #     hoteis = hoteis.filter(Q(cnpj__icontains=cnpj))
-            # if nome_fantasia:
-            #     hoteis = hoteis.filter(Q(nome_fantasia__icontains=nome_fantasia))
 
             if nome:
                 produtos = produtos.filter(nome__icontains=nome)

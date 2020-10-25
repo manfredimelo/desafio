@@ -7,50 +7,37 @@ Cadastros Básicos
 {% block titlebar %}
 <nav aria-label="breadcrumb" role="navigation">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Produtos</li>
+        <li class="breadcrumb-item active" aria-current="page">Regras</li>
     </ol>
 </nav>
 {% endblock titlebar %}
 {% block content %}
 <div class="row">
     <div class="col-sm-12">
-        <h3>Listagem de Produtos</h3>
+        <h3>Listagem de Regras</h3>
         <div class="card ">
             <div class="card-header">
                 <form class="" action="" method="GET">
                     {% csrf_token %}
                     <div class="row filters float-right">
                         <div class="col-sm-2">
-                            <a href="{% url 'cadastrar_produto' %}" class="btn btn-outline-danger mb-2"
-                               data-toggle="tooltip" title="Cadastrar novo Produto">
-                                <i class="fas fa-plus fa-xs"></i> Novo Produto
+                            <a href="" class="btn btn-outline-danger mb-2"
+                               data-toggle="tooltip" title="Cadastrar nova Regra">
+                                <i class="fas fa-plus fa-xs"></i> Nova Regra
                             </a>
                         </div>
                     </div>
                     <div class="row filters">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label>Nome</label>
-                                {{ buscar_form.nome }}
+                                <label>Campo</label>
+                                {{ buscar_form.campo }}
                             </div>
                         </div>
-
-                        <div class="col-sm-2">
-                            <div class="form-group">
-                                <label>Cor</label>
-                                {{ buscar_form.cor }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
+                        <div class="col-sm-4">
                             <div class="form-group ">
-                                <label>Tipo</label>
-                                {{ buscar_form.tipo }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="form-group ">
-                                <label>Processado</label>
-                                {{ buscar_form.processado }}
+                                <label>Valor</label>
+                                {{ buscar_form.valor }}
                             </div>
                         </div>
                         <div class="col-sm-2">
@@ -71,37 +58,30 @@ Cadastros Básicos
                         <thead class="thead-light text-primary">
                         <tr>
                             <th>
-                                Código
+                                ID
                             </th>
                             <th>
-                                Nome
+                                Campo
                             </th>
                             <th>
-                                Tipo
-                            </th>
-                            <th>
-                                Cor
-                            </th>
-                            <th>
-                                Processado
+                                Valor
                             </th>
 
-                            <th class="text-center">
+
+                            <th class="text-right">
                                 #
                             </th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for produto in produtos %}
+                        {% for regra in regras %}
                         <tr>
-                            <td>{{produto.codigo_gtin}}</td>
-                            <td>{{produto.nome}}</td>
-                            <td>{{ produto.tipo }}</td>
-                            <td>{{ produto.cor }}</td>
-                            <td>{% if produto.processado %} SIm {% else %} Não {% endif %}</td>
+                            <td>{{regra.id}}</td>
+                            <td>{{regra.campo}}</td>
+                            <td>{{ regra.valor }}</td>
 
-                            <td>
-                                <a class="btn btn-outline-danger" href="{% url 'editar_produto' produto.id %}"
+                            <td class="text-right">
+                                <a class="btn btn-outline-danger" href="{% url 'editar_regra' regra.id %}"
                                    data-toggle="tooltip" title="Editar">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
@@ -116,13 +96,13 @@ Cadastros Básicos
                 <div class="row">
                     <div class="col-sm-12">
                         <div >
-                            Mostrando {{ produtos_paginator.start_index }} até {{ produtos_paginator.end_index }} de
-                            {{ produtos_paginator.paginator.count }} registros.
+                            Mostrando {{ regras_paginator.start_index }} até {{ regras_paginator.end_index }} de
+                            {{ regras_paginator.paginator.count }} registros.
                         </div>
 
                         <nav aria-label="navigation" class="mt-2">
                             <ul class="pagination float-right">
-                                {% bootstrap_paginate produtos_paginator show_first_last="true" url_param_name="produtos_page" %}
+                                {% bootstrap_paginate regras_paginator show_first_last="true" url_param_name="regras_page" %}
                             </ul>
                         </nav>
                     </div>

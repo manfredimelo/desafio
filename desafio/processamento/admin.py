@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+u"""."""
+
 from django.contrib import admin
 
-# Register your models here.
+from processamento.models import Regra, Classificacao
+
+admin.site.register(Regra)
+admin.site.register(Classificacao)
