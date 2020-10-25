@@ -1,9 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
+from base.menu import get_list
 
 
 @login_required(login_url='/')
 def index(request):
-
-    return render(request, 'base/index.html')
+    menu = get_list('Dashboard')
+    print (menu)
+    return render(request, 'base/index.html', locals())

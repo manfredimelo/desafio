@@ -8,7 +8,7 @@ PROCESSADOS_CHOICES = [
 ]
 
 
-class ProdutoBuscarForm(forms.ModelForm):
+class ProdutoBuscarForm(forms.Form):
     form_control_class = 'form-control '
     nome = forms.CharField(widget=forms.TextInput(), required=False)
     tipo = forms.CharField(widget=forms.TextInput(), required=False)
@@ -20,8 +20,3 @@ class ProdutoBuscarForm(forms.ModelForm):
 
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = self.form_control_class
-
-    class Meta:
-        model = Produto
-        fields = '__all__'
-

@@ -41,7 +41,10 @@ class ProdutoListView(PermissionRequiredMixin, ListView):
         buscar_form = self.form_class(self.request.GET)
         if buscar_form.is_valid():
             id = request.get('id')
-            # nome_fantasia = request.get('nome_fantasia')
+            nome = request.get('nome')
+            cor = request.get('cor')
+            tipo = request.get('tipo')
+            processado = request.get('processado')
             # id_regiao = request.get('regiao')
             # # status = request.get('status')
             # cnpj = request.get('cnpj')
@@ -50,8 +53,17 @@ class ProdutoListView(PermissionRequiredMixin, ListView):
             #     hoteis = hoteis.filter(Q(cnpj__icontains=cnpj))
             # if nome_fantasia:
             #     hoteis = hoteis.filter(Q(nome_fantasia__icontains=nome_fantasia))
-            # if id_regiao:
-            #     hoteis = hoteis.filter(regiao=id_regiao)
+
+            if nome:
+                produtos = produtos.filter(nome__icontains=nome)
+            if cor:
+                produtos = produtos.filter(nome__icontains=cor)
+            if tipo:
+                produtos = produtos.filter(tipo__icontains=tipo)
+            if processado and processado == "SIM":
+                produtos = produtos.filter(processado=True)
+            elif processado and processado == "NAO":
+                produtos = produtos.filter(processado=True)
 
         return produtos
 

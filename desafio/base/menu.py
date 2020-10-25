@@ -12,7 +12,8 @@ def get_list(local, user=None):
 
     menulist.append([True, 'Dashboard', '/index/',
                      'dashboard', True])
-
+    menulist.append([True, 'Produtos', '/produtos/',
+                     'produtos', True])
 
 
     for menu in menulist:
