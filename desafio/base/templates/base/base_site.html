@@ -25,6 +25,12 @@
         <link rel="stylesheet" href="{% static 'libs/fileinput/css/fileinput.min.css' %}">
      	<link rel="stylesheet" href="{% static 'libs/bootstrap/css/bootstrap-glyphicons.css' %}">
         {% block extracss %} {% endblock %}
+        <style>
+            .item_breadcrumb{
+                color: #00796B;
+            }
+
+        </style>
     </head>
 
     <body>
@@ -60,11 +66,13 @@
                 <nav class="navbar navbar-transparent navbar-expand-lg navbar-absolute fixed-top " data-color="azure"
                         style="background:#00796B !important">
                     <div class="container-fluid" style="color:#fff!important ">
+
                         <div class="navbar-wrapper" style="color:#fff!important;">
-                            <a class="navbar-brand" href="javascript:;" style="color:#fff!important;">
+                            <div class="navbar-brand" href="javascript:;" style="color:#fff!important;">
                                 {% block titlebar %}
                                 {% endblock  %}
-                            </a>
+                            </div>
+
                         </div>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                               aria-expanded="false" aria-label="Toggle navigation" style="background-color:#fff!important;">
@@ -99,6 +107,7 @@
                 <!-- End Navbar -->
                 <div class="content">
                     <div class="container-fluid">
+
                         {% block messages %}
                             {% if messages %}
                                 {% for message in messages %}

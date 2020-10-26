@@ -124,21 +124,10 @@ class ProdutoUpdateView(UpdateView):
             return redirect(reverse('listar_produtos'))
 
         return render(request, self.template_name, context=locals())
-#
-#
-# # @permission_required('painel.add_hotel')
-# class HotelDeleteView(DeleteView):
-#     permission_required = 'painel.add_hotel'
-#
-#     @method_decorator(login_required)
-#     def get(self, request, id_hotel):
-#         usuario_logado = self.request.user
-#         hotel = get_object_or_404(Hotel, pk=id_hotel)
-#
-#         if hotel:
-#             hotel.is_active = False
-#             hotel.save()
-#             messages.success(request, '<strong>' + hotel.nome + '</strong> foi desativado com sucesso. ')
-#             return redirect(reverse('listar_hoteis'))
-#
-#         return render(request, self.template_name, context=locals())
+
+
+def classificacao_produto(request, id_produto):
+    menu = get_list('Produtos')
+    produto = Produto.objects.get(pk=id_produto)
+
+    return render(request, 'produto/classificacao_produto.html', locals())

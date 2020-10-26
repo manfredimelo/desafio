@@ -1,0 +1,82 @@
+{% extends 'base/base_site.html' %}
+{% load static %}
+{% block pagetitle %}
+Cadastros Básicos
+{% endblock pagetitle %}
+
+{% block titlebar %}
+
+<nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+		<li class="breadcrumb-item text-success">
+			<a class="item_breadcrumb" href="{% url 'listar_produtos' %}" ><b>Produtos</b></a>
+		</li>
+
+        <li class="breadcrumb-item active ">Classificação</li>
+
+    </ol>
+</nav>
+{% endblock titlebar %}
+{% block breadcrumb %}
+
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Classificação Produto: {{ produto.nome }}</h3>
+        <div class="card ">
+            <div class="card-header">
+                <form class="" action="" method="GET">
+                    {% csrf_token %}
+
+
+
+                </form>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-light text-primary">
+                        <tr>
+                            <th>
+                                ID Classificação
+                            </th>
+                            <th>
+                                Regra ID
+                            </th>
+                            <th>
+                                Campo
+                            </th>
+                            <th>
+                                Valor
+                            </th>
+                            <th>
+                                Reultado
+                            </th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for classificacao in produto.get_classificacoes %}
+                        <tr>
+                            <td>{{classificacao.id}}</td>
+                            <td>{{classificacao.regra.id}}</td>
+                            <td>{{classificacao.regra.campo}}</td>
+                            <td>{{classificacao.regra.valor}}</td>
+                            <td>{% if classificacao.resultado %} Compatível {% else %} Não Compatível {% endif %}</td>
+
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extrajs %}
+
+{% endblock %}

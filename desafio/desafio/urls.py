@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 from base.views.index import index
 from base.views.login import login_restrito
 from base.views.logout import logout
-from base.views.manter_produto import ProdutoCreateView, ProdutoListView, ProdutoUpdateView
+from base.views.manter_produto import ProdutoCreateView, ProdutoListView, ProdutoUpdateView, classificacao_produto
 from processamento.api.viewsets import ClassificacaoViewSet
 from processamento.views.manter_regra import RegraListView, RegraCreateView, RegraUpdateView
 from rest_framework import routers
@@ -44,10 +44,8 @@ urlpatterns = [
     url(r'^regras/$', login_required(RegraListView.as_view()), name="listar_regras"),
     url(r'^regras/cadastrar/$', RegraCreateView.as_view(), name="cadastrar_regra"),
     url(r'^regras/editar/(?P<id_regra>\d+)/$', RegraUpdateView.as_view(), name="editar_regra"),
+    url(r'produtos/classificacao_produto/(?P<id_produto>\d+)/$', classificacao_produto, name='classificacao_produto'),
 
-    # path('admin/', admin.site.urls),
-    # path('login', login_restrito, name='login'),
-    # url(r'^logout/$', logout, name='logout_restrito'),
-    # url(r'', index, name='index'),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

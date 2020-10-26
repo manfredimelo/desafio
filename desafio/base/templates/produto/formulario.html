@@ -5,14 +5,22 @@
 	Cadastro de Produtos
 {% endblock pagetitle %}
 {% block titlebar %}
-<!--<nav aria-label="breadcrumb" role="navigation">-->
-    <ol class="breadcrumb">
-		<li class="breadcrumb-item text-success">
-			<b>Produtos</b>
-		</li>
-        <li class="breadcrumb-item active" aria-current="page">Cadastrar</li>
-    </ol>
-<!--</nav>-->
+	<nav aria-label="breadcrumb" role="navigation">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item text-success">
+				<a class="item_breadcrumb" href="{% url 'listar_produtos' %}" ><b>Produtos</b></a>
+			</li>
+
+			<li class="breadcrumb-item active ">
+				{% if id_produto %}
+					Editar Produto
+				{%else%}
+					Cadastrar
+				{% endif %}
+			</li>
+
+		</ol>
+	</nav>
 {% endblock titlebar %}
 {% block content %}
 	<div class="row">
@@ -58,21 +66,14 @@
 							</div>
 							 <div class="form-row">
 								 <div class="form-group col-sm-12 mt-2">
-									{% if produto.id %}
-										<a href="">
-											<button type="button" class="pull-left btn btn-outline-danger"  >
-												<i class="fas fa-trash-alt"></i>&nbsp;Desativar
-											</button>
-										</a>
-									 {% else %}
-									 	<a href="{% url 'listar_produtos' %}">
-											<button type="button" class="pull-left btn btn-outline-danger"  >
-												<i class="fas fa-trash-alt"> </i> Cancelar
-											</button>
-										</a>
-									{% endif %}
+									<a href="{% url 'listar_produtos' %}">
+										<button type="button" class="pull-left btn btn-outline-danger"  >
+											<i class="fas fa-trash-alt"> </i> Cancelar
+										</button>
+									</a>
 									 <button type="submit" class="btn btn-outline-success float-right">
-									 <i class="far fa-save"> </i>&nbsp; Salvar</button>
+									 	<i class="far fa-save"> </i>&nbsp; Salvar
+									 </button>
 								 </div>
 							 </div>
 						</form>

@@ -86,7 +86,7 @@ Cadastros Básicos
                                 Processado
                             </th>
 
-                            <th class="text-center">
+                            <th class="text-right">
                                 #
                             </th>
                         </tr>
@@ -100,10 +100,14 @@ Cadastros Básicos
                             <td>{{ produto.cor }}</td>
                             <td>{% if produto.processado %} SIm {% else %} Não {% endif %}</td>
 
-                            <td>
+                            <td class="text-right">
                                 <a class="btn btn-outline-danger" href="{% url 'editar_produto' produto.id %}"
                                    data-toggle="tooltip" title="Editar">
                                     <i class="fas fa-pencil-alt"></i>
+                                </a>
+                                <a class="btn btn-outline-success" href="{% url 'classificacao_produto' produto.id %}"
+                                   data-toggle="tooltip" title="Visualizar Classificação do produto">
+                                    <i class="fa fa-list-alt" aria-hidden="true"></i>
                                 </a>
                             </td>
                         </tr>

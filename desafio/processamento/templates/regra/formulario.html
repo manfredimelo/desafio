@@ -5,14 +5,22 @@
 	Cadastro de Regras
 {% endblock pagetitle %}
 {% block titlebar %}
-<!--<nav aria-label="breadcrumb" role="navigation">-->
+<nav aria-label="breadcrumb" role="navigation">
     <ol class="breadcrumb">
 		<li class="breadcrumb-item text-success">
-			<b>Produtos</b>
+			<a class="item_breadcrumb" href="{% url 'listar_regras' %}" ><b>Regras</b></a>
 		</li>
-        <li class="breadcrumb-item active" aria-current="page">Cadastrar</li>
+
+        <li class="breadcrumb-item active ">
+			{% if id_regra %}
+				Editar Regra
+			{% else %}
+				Cadastrar Regra
+			{% endif %}
+		</li>
+
     </ol>
-<!--</nav>-->
+</nav>
 {% endblock titlebar %}
 {% block content %}
 	<div class="row">

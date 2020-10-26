@@ -22,3 +22,7 @@ class Produto(models.Model):
     def __str__(self):
         return u'%s ' % (self.nome)
 
+    def get_classificacoes(self):
+        classicicacoes = self.classificacao_set.all()
+        return classicicacoes
+
