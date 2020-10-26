@@ -11,9 +11,10 @@ from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from django.views.generic.list import ListView
 
 from base.menu import get_list
+from base.observer import analise_classificao
 from processamento.forms.regra_buscar_form import RegraBuscarForm
 from processamento.forms.regra_form import RegraForm
-from processamento.models import Regra
+from processamento.models import Regra, Classificacao
 
 
 class RegraListView(PermissionRequiredMixin, ListView):
@@ -71,6 +72,7 @@ class RegraCreateView(CreateView):
 
         if regra_form.is_valid():
             regra = regra_form.save()
+            analise_classificao(regra)
             messages.success(request,
                              '<strong> Regra </strong> foi salva com sucesso. ')
             return redirect(reverse('listar_regras'))
@@ -109,8 +111,9 @@ class RegraUpdateView(UpdateView):
         if regra_form.is_valid():
             regra = regra_form.save(commit=False)
             regra.save()
-
+            analise_classificao(regra)
             messages.success(request, '<strong> Regra</strong> foi atualizadacom sucesso. ')
             return redirect(reverse('listar_regras'))
 
         return render(request, self.template_name, context=locals())
+

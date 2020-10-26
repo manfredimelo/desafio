@@ -14,6 +14,7 @@ from base.forms.produto_buscar_form import ProdutoBuscarForm
 from base.forms.produto_form import ProdutoForm
 from base.menu import get_list
 from base.models import Produto
+from base.observer import analise_classificao, revisa_classificacoes_produto
 
 
 class ProdutoListView(PermissionRequiredMixin, ListView):
@@ -81,6 +82,7 @@ class ProdutoCreateView(CreateView):
 
         if produto_form.is_valid():
             produto = produto_form.save()
+            analise_classificao()
             messages.success(request,
                              '<strong>' + produto.nome + '</strong> foi salvo com sucesso. ')
             return redirect(reverse('listar_produtos'))
@@ -120,6 +122,7 @@ class ProdutoUpdateView(UpdateView):
             produto = produto_form.save(commit=False)
             produto.save()
 
+            revisa_classificacoes_produto(produto)
             messages.success(request, '<strong> {} </strong> foi atualizado com sucesso. '.format(produto.nome))
             return redirect(reverse('listar_produtos'))
 

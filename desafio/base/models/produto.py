@@ -6,7 +6,7 @@ class Produto(models.Model):
 
     nome = models.CharField('Nome', max_length=100)
     cor = models.CharField('Cor', max_length=100)
-    codigo_gtin = models.CharField('Código', max_length=100)
+    codigo_gtin = models.CharField('Código', max_length=100, unique=True)
     tipo = models.CharField('Tipo', max_length=100)
     processado = models.BooleanField(verbose_name='Processado',
                                     default=False)

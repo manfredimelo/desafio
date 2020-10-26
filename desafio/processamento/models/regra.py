@@ -7,6 +7,10 @@ class Regra(models.Model):
 
     class Meta():
         app_label = 'processamento'
+        unique_together = ['campo', 'valor']
+
+    def get_classificacoes(self):
+        classificicacoes = self.classificacao_set.all()
 
     def __str__(self):
         return u'%s: %s ' % (self.campo, self.valor)
