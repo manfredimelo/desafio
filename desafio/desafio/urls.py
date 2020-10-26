@@ -17,15 +17,23 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.urls import include, path
 from django.conf.urls import url
+from django.conf import settings
+from django.conf.urls.static import static
 
 from base.views.index import index
 from base.views.login import login_restrito
 from base.views.logout import logout
 from base.views.manter_produto import ProdutoCreateView, ProdutoListView, ProdutoUpdateView
+from processamento.api.viewsets import ClassificacaoViewSet
 from processamento.views.manter_regra import RegraListView, RegraCreateView, RegraUpdateView
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'classificacoes', ClassificacaoViewSet, base_name='Classificacao')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
+    path('rotas/', include(router.urls)),
     path('', login_restrito, name='login'),
     url(r'index', index, name='index'),
     url(r'^sair/$', logout, name='logout'),
@@ -42,4 +50,4 @@ urlpatterns = [
     # url(r'^logout/$', logout, name='logout_restrito'),
     # url(r'', index, name='index'),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
