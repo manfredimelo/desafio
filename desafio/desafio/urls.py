@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
+from django.db import router
 from django.urls import include, path
 from django.conf.urls import url
 from django.conf import settings
@@ -23,16 +24,21 @@ from django.conf.urls.static import static
 from base.views.index import index
 from base.views.login import login_restrito
 from base.views.logout import logout
+from rest_framework.authtoken.views import obtain_auth_token
 from base.views.manter_produto import ProdutoCreateView, ProdutoListView, ProdutoUpdateView, classificacao_produto
 from processamento.api.viewsets import ClassificacaoViewSet
 from processamento.views.manter_regra import RegraListView, RegraCreateView, RegraUpdateView
 from rest_framework import routers
 
+_read_only = {'get': 'list'}
+
+
 router = routers.DefaultRouter()
-router.register(r'classificacoes', ClassificacaoViewSet, base_name='Classificacao')
+# router.register(r'classificacoes', ClassificacaoViewSet, base_name='Classificacao')
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+
+    path('rotas/classificacoes/', ClassificacaoViewSet.as_view(_read_only), name='classificacao-list'),
     path('rotas/', include(router.urls)),
     path('', login_restrito, name='login'),
     url(r'index', index, name='index'),
@@ -46,6 +52,7 @@ urlpatterns = [
     url(r'^regras/editar/(?P<id_regra>\d+)/$', RegraUpdateView.as_view(), name="editar_regra"),
     url(r'produtos/classificacao_produto/(?P<id_produto>\d+)/$', classificacao_produto, name='classificacao_produto'),
 
-
+    path('api-token-auth/', obtain_auth_token),
+    path('admin/', admin.site.urls),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

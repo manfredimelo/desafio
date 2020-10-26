@@ -8,5 +8,5 @@ class Regra(models.Model):
     class Meta():
         app_label = 'processamento'
 
-    def __unicode__(self):
-        return u'%s ' % (self.campo)
+    def __str__(self):
+        return u'%s: %s ' % (self.campo, self.valor)

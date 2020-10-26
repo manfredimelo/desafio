@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-from os.path import normpath, join, abspath
+from os.path import abspath, dirname, join, normpath
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(abspath(__file__))
 SITE_ROOT = os.path.dirname(BASE_DIR)
@@ -30,8 +30,8 @@ DEBUG = True
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 ALLOWED_HOSTS = ['localhost']
-LOGIN_URL = "/"
-LOGIN_REDIRECT_URL='/'
+LOGIN_URL = "/d"
+LOGIN_REDIRECT_URL='/d'
 
 ALLOWED_HOSTS = []
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'bootstrap_pagination',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
     'base',
     'processamento',
 ]
@@ -136,10 +137,19 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
 ]
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+# REST_FRAMEWORK ={
+#      'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+# }
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ]
+# }

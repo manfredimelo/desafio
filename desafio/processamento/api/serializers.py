@@ -23,24 +23,9 @@ class ClassificacaoSerializer(ModelSerializer):
     #     return
 
     # def create(self, validated_data):
-    #     atracoes = validated_data['atracoes']
-    #     del validated_data['atracoes']
-    #     endereco = validated_data['endereco']
-    #     del validated_data['endereco']
-    #
-    #     doc_identificacao = validated_data['doc_identificacao']
-    #     del validated_data['doc_identificacao']
-    #
-    #     ponto = PontoTuristico.objects.create(**validated_data)
-    #     self.cria_atracoes(atracoes, ponto) #'''Processando manytomany'''
-    #     end = Endereco.objects.create(**endereco) #Processando foreignkey
-    #     ponto.endereco = end
     #
     #
-    #     doc_identificacao = DocIdentificacao.objects.create(**doc_identificacao)
-    #     ponto.doc_identificacao = doc_identificacao
-    #
-    #     return ponto
+    #     return ''
     # def get_descricao_completa(self, obj):
     #
     #     return '%s - %s ' % (obj.nome, obj.descricao)

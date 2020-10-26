@@ -1,7 +1,12 @@
 {% extends 'base/base_site.html' %}
 
 {% block titlebar %}
-  Dashboard
+<nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+        <a class="item_breadcrumb" href="{% url 'index' %}" ><b>Dashboard</b></a>
+    </ol>
+</nav>
+
 {% endblock  %}
 
 {% block content %}
