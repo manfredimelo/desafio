@@ -3,11 +3,11 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
 from django.core.paginator import Paginator
-from django.db.models import Q
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls.base import reverse
 from django.utils.decorators import method_decorator
-from django.views.generic.edit import UpdateView, CreateView, DeleteView
+from django.views.generic.edit import UpdateView, CreateView
 from django.views.generic.list import ListView
 
 from base.forms.produto_buscar_form import ProdutoBuscarForm

@@ -71,7 +71,6 @@ def nova_classificao(regra, produto):
         classificacao.resultado = False
     classificacao.regra = regra
     classificacao.produto = produto
-    print(classificacao.regra, classificacao.produto)
 
     produto.processado = True
     produto.save()
