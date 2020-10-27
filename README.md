@@ -7,6 +7,9 @@ A view observer mantém todo o motor de classificação. Mode ser rodado chamand
 
 
 
+Foi usada a biblioteca do django TestCase para a cobertura de alguns testes unitários.
+Para rodar: python manage.py test  ou python manage.py test --verbosity 2
+
 
 
 
