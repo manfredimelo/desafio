@@ -10,6 +10,7 @@ class ProdutoForm(forms.ModelForm):
     selectize_class = 'selectize '
     msg_campo_obrigatorio = 'Este campo é obrigatório.'
 
+    codigo_gtin= forms.CharField(widget=forms.TextInput(), label='Código', help_text="Código Único")
     def __init__(self, *args, **kwargs):
         super(ProdutoForm, self).__init__(*args, **kwargs)
 

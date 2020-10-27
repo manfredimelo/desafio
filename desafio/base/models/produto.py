@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
+from django.urls import reverse
 
 
 class Produto(models.Model):
@@ -26,3 +27,5 @@ class Produto(models.Model):
         classicicacoes = self.classificacao_set.all()
         return classicicacoes
 
+    def get_absolute_url(self):
+        return reverse('editar_produto', args=[str(self.id)])

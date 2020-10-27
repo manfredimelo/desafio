@@ -9,8 +9,6 @@ from django.contrib import messages
 def login_restrito(request):
     user = request.user
     redirect_to = request.GET.get('next', 'index')
-    # if request.user:
-    #     return redirect('index')
 
     if request.method == "POST":
         username = request.POST.get('username')
@@ -28,5 +26,8 @@ def login_restrito(request):
                 messages.error(request, 'Usuário sem permissão de acesso')
             return render(request, 'base/login.html')
     else:
+
+        if request.user.id:
+            return redirect('index')
         form_login = AuthenticationForm()
     return render(request, 'base/login.html', {'form_login': form_login})

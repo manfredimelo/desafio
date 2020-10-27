@@ -11,6 +11,9 @@ Cadastros Básicos
 		<li class="breadcrumb-item text-success">
 			<a class="item_breadcrumb" href="{% url 'listar_produtos' %}" ><b>Produtos</b></a>
 		</li>
+		<li class="breadcrumb-item text-success">
+			<a class="item_breadcrumb" href="{% url 'editar_produto' produto.id %}" ><b>{{ produto.nome }}</b></a>
+		</li>
         <li class="breadcrumb-item active ">Classificação</li>
     </ol>
 </nav>
@@ -68,6 +71,16 @@ Cadastros Básicos
                         </tbody>
                     </table>
                 </div>
+
+                     <div class="form-row">
+                         <div class="form-group col-sm-12 mt-2">
+                            <a href="{% url 'listar_produtos' %}">
+                                <button type="button" class="pull-left btn btn-outline-danger"  >
+                                    <i class="fas fa-trash-alt"> </i> Cancelar
+                                </button>
+                            </a>
+                         </div>
+                     </div>
             </div>
 
         </div>

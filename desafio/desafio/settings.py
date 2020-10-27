@@ -30,8 +30,8 @@ DEBUG = True
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 ALLOWED_HOSTS = ['localhost']
-LOGIN_URL = "/d"
-LOGIN_REDIRECT_URL='/d'
+LOGIN_URL = "/"
+LOGIN_REDIRECT_URL='/'
 
 ALLOWED_HOSTS = []
 

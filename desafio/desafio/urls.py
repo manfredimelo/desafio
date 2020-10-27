@@ -43,7 +43,7 @@ urlpatterns = [
     path('', login_restrito, name='login'),
     url(r'index', index, name='index'),
     url(r'^sair/$', logout, name='logout'),
-    url(r'^produtos/$', login_required(ProdutoListView.as_view()), name="listar_produtos"),
+    url(r'^produtos/', login_required(ProdutoListView.as_view()), name='listar_produtos'),
     url(r'^produtos/cadastrar/$', ProdutoCreateView.as_view(), name="cadastrar_produto"),
     url(r'^produtos/editar/(?P<id_produto>\d+)/$', ProdutoUpdateView.as_view(), name="editar_produto"),
 
