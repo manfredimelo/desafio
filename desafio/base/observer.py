@@ -19,7 +19,7 @@ def motor():
 '''revisa classificações dadas após edição de uma regra'''
 def revisa_classificacoes_regra(regra):
 
-    produtos = Produto.objects.filter()
+    produtos = Produto.objects.all()
 
     for produto in produtos:
         '''Atualizando as classificações existentes'''
@@ -71,6 +71,7 @@ def nova_classificao(regra, produto):
         classificacao.resultado = False
     classificacao.regra = regra
     classificacao.produto = produto
+    classificacao.save()
 
     produto.processado = True
     produto.save()

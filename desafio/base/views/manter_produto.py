@@ -128,9 +128,8 @@ class ProdutoUpdateView(UpdateView):
 
         return render(request, self.template_name, context=locals())
 
-
+@login_required(login_url='/')
 def classificacao_produto(request, id_produto):
     menu = get_list('Produtos')
     produto = Produto.objects.get(pk=id_produto)
-
     return render(request, 'produto/classificacao_produto.html', locals())

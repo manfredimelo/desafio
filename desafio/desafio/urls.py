@@ -39,11 +39,11 @@ router = routers.DefaultRouter()
 urlpatterns = [
 
     path('rotas/classificacoes/', ClassificacaoViewSet.as_view(_read_only), name='classificacao-list'),
-    path('rotas/', include(router.urls)),
+    # path('rotas/', include(router.urls)),
     path('', login_restrito, name='login'),
     url(r'index', index, name='index'),
     url(r'^sair/$', logout, name='logout'),
-    url(r'^produtos/', login_required(ProdutoListView.as_view()), name='listar_produtos'),
+    url(r'^produtos/$', login_required(ProdutoListView.as_view()), name='listar_produtos'),
     url(r'^produtos/cadastrar/$', ProdutoCreateView.as_view(), name="cadastrar_produto"),
     url(r'^produtos/editar/(?P<id_produto>\d+)/$', ProdutoUpdateView.as_view(), name="editar_produto"),
 
@@ -53,6 +53,6 @@ urlpatterns = [
     url(r'produtos/classificacao_produto/(?P<id_produto>\d+)/$', classificacao_produto, name='classificacao_produto'),
 
     path('api-token-auth/', obtain_auth_token),
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

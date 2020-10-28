@@ -54,7 +54,7 @@ class ProdutoTestClass(TestCase):
 
     def test_get_absolute_url(self):
         produto = Produto.objects.get(id=1)
-        self.assertEquals(produto.get_absolute_url(), '/produtos/editar/1/')
+        self.assertEquals(produto.get_absolute_url(), '/editar_produto/1/')
 
     def test_object_name_is_procuto_name(self):
         produto = Produto.objects.get(id=1)

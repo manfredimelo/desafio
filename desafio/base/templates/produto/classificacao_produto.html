@@ -24,7 +24,7 @@ Cadastros Básicos
 {% block content %}
 <div class="row">
     <div class="col-sm-12">
-        <h3>Classificação Produto: {{ produto.nome }}, {{ produto.tipo }}, {{ produto.cor }}</h3>
+        <h3>Classificação Produto: {{ produto.codigo_gtin }}-{{ produto.nome }}, {{ produto.tipo }}, {{ produto.cor }}</h3>
         <div class="card ">
             <div class="card-header">
                 <form class="" action="" method="GET">
@@ -76,7 +76,7 @@ Cadastros Básicos
                          <div class="form-group col-sm-12 mt-2">
                             <a href="{% url 'listar_produtos' %}">
                                 <button type="button" class="pull-left btn btn-outline-danger"  >
-                                    <i class="fas fa-trash-alt"> </i> Cancelar
+                                    <i class="fas fa-trash-alt"> </i> Voltar
                                 </button>
                             </a>
                          </div>
