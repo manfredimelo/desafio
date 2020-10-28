@@ -2,7 +2,8 @@
 Rota para a API para consulta de classificação de produtos: http://localhost:8000/rotas/classificacoes/
 
 
-Foram feiros Listagem, cadastro e edição de regras e produtos. Cadas regra ou produto modificado faz com que as classificações sejam refeitas/alteradas ou até mesmo criada.
+Foram feitos: Listagem, cadastro e edição de regras e produtos. Cada regra ou produto modificado faz com que as classificações sejam refeitas/alteradas ou até mesmo criada.
+Na lista de produto é possivel clicar na opção de visualizar classificação.
 A view observer mantém todo o motor de classificação. Mode ser rodado chamando a def motor() que usa a biblioteca schedule e rodará a análise a cada hora. Pode ser rodado também através da def analise_classificao() que fará toda a verificação. Para isto, a análise da classificação deverá estar configurada em um cron no servidor.
 
 
